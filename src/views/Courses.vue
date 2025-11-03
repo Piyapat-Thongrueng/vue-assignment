@@ -22,7 +22,7 @@
 import { ref, onMounted } from "vue";
 import CourseCard from "../components/CourseCard.vue";
 // TODO: import axios
-// TODO: import { useFavoriteStore } จาก "@/stores/favorite"
+// TODO: import { useFavoriteStore } จาก "../stores/favorite"
 
 const courses = ref([]);
 // TODO: ดึงข้อมูลจาก API ด้วย axios.get() แล้วเก็บใน courses
