@@ -1,16 +1,31 @@
 <template>
   <div class="course-list">
     <div class="course-card">
-      <h3>ชื่อคอร์ส: ...</h3>
-      <p>ราคา: ... บาท</p>
-      <button>เพิ่มในรายการโปรด</button>
+      <h3>ชื่อคอร์ส: {{ props.course.title }}</h3>
+      <p>ราคา: {{ props.course.price }} บาท</p>
+      <button @click="addFavorite(props.course)">เพิ่มในรายการโปรด</button>
+      <button @click="removeFavorite(props.course)">ลบออกจากรายการโปรด</button>
     </div>
   </div>
 </template>
 
 <script setup>
 // TODO: import { useFavoriteStore } แล้วเขียนฟังก์ชันเพิ่มคอร์สลง store
-// TODO: defineProps({ course: Object })
+import { useFavoriteStore } from "../stores/favorite";
+const favoriteStore = useFavoriteStore();
+const addFavorite = (course) => {
+  favoriteStore.addFavorite(course);
+};
+const removeFavorite = (course) => {
+  favoriteStore.removeFavorite(course);
+};
+  // TODO: defineProps({ course: Object })
+const props = defineProps({
+  course: {
+    type: Object,
+    required: true,
+  },
+});
 </script>
 
 <style scoped>
